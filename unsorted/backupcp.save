@@ -1,0 +1,29 @@
+cp -rv /mnt/MediaShare/Baby/ /mnt/Backup/Baby/
+
+cp -rav /mnt/MediaShare/Books/ /mnt/Backup/Books/
+
+cp -rav /mnt/MediaShare/Documents/ /mnt/Backup/Documents/
+
+cp -rav /mnt/MediaShare/HTPC/ /mnt/Backup/HTPC/
+
+cp -rav /mnt/MediaShare/Movies/ /mnt/Backup/Movies/
+
+cp -rav /mnt/MediaShare/Music/ /mnt/Backup/Music/
+
+cp -rav /mnt/MediaShare/ownCloud/ /mnt/Backup/ownCloud/
+
+cp -rav /mnt/MediaShare/Pictures/ /mnt/Backup/Pictures/
+
+cp -rav /mnt/MediaShare/Programming/ /mnt/Backup/Programming/
+
+cp -rav /mnt/MediaShare/Programs/ /mnt/Backup/Programs/
+
+cp -rav /mnt/MediaShare/Ripped/ /mnt/Backup/Ripped/
+
+cp -rav /mnt/MediaShare/Torrents/ /mnt/Backup/Torrents/
+
+cp -rav /mnt/MediaShare/TVShows/ /mnt/Backup/TVShows/
+
+cp -rav /mnt/MediaShare/VPN/ /mnt/Backup/VPN/
+
+chmod 777 /mnt/Backup

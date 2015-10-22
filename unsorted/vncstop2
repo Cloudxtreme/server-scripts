@@ -1,0 +1,4 @@
+#!/bin/sh
+
+vncserver -kill :2
+

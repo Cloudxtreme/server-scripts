@@ -1,0 +1,18 @@
+#!/bin/bash
+
+MONTH=$(date +"%m")
+YEAR=$(date +"%Y")
+DAY=$(date +"%d")
+TIME=$(date +"%H%M")
+DIR="/home/josh/filebotlogs/$YEAR-$MONTH"
+
+
+if [ -d "$DIR" ]
+then
+	cp /home/josh/filebot.log /home/josh/filebotlogs/$YEAR-$MONTH/$DAY-$TIME.log
+else
+	mkdir /home/josh/filebotlogs/$YEAR-$MONTH
+	cp /home/josh/filebot.log /home/josh/filebotlogs/$YEAR-$MONTH/$DAY-$TIME.log
+fi
+
+echo done

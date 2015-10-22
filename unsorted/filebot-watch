@@ -1,0 +1,21 @@
+#!/bin/bash
+
+MONTH=$(date +"%m")
+YEAR=$(date +"%Y")
+DAY=$(date +"%d")
+TIME=$(date +"%H%M")
+HOUR=$(date +"%H")
+MIN=$(date +"%M")
+DIR="/home/josh/filebotlogs/$YEAR-$MONTH"
+
+filebot -script "/home/josh/scripts/amc.groovy" "/home/josh/tortmp" --output "/mnt/MediaShare" --action copy --conflict override -non-strict --def subtitles=en artwork=y backdrops=y plex=10.135.242.54 >> "/home/josh/filebot.log" 2>&1
+
+if [ -d "$DIR" ]
+then
+        mv /home/josh/filebot.log /home/josh/filebotlogs/$YEAR-$MONTH/$DAY-$TIME.log
+else
+        mkdir /home/josh/filebotlogs/$YEAR-$MONTH
+        mv /home/josh/filebot.log /home/josh/filebotlogs/$YEAR-$MONTH/$DAY-$TIME.log
+fi
+
+rm -rf /home/josh/filebot.log

@@ -1,0 +1,32 @@
+#!/bin/sh
+while inotifywait -e create /mnt/MediaShare/Torrents/Completed; do
+
+    chmod 777 -R /mnt/MediaShare/Torrents/Completed
+
+    chown jphipps:users -R /mnt/MediaShare/Torrents/Completed
+
+    find / -name ._\* -print0 | xargs -0 rm -f
+
+    rsync -r /mnt/MediaShare/Torrents/Completed/* /home/josh/tortmp/
+
+    chmod 777 -R /home/josh/tortmp
+
+    chown jphipps:users -R /home/josh/tortmp
+
+    find / -name ._\* -print0 | xargs -0 rm -f
+
+    /home/josh/scripts/filebot-watch
+
+    rm -rf /home/josh/tortmp/*
+
+    chmod 777 -R /mnt/MediaShare/Movies
+    chmod 777 -R /mnt/MediaShare/Music
+    chmod 777 -R /mnt/MediaShare/TVShows
+
+    chown jphipps:users -R /mnt/MediaShare/Movies
+    chown jphipps:users -R /mnt/MediaShare/Music
+    chown jphipps:users -R /mnt/MediaShare/TVShows
+
+    find / -name ._\* -print0 | xargs -0 rm -f
+
+done

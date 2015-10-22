@@ -1,0 +1,29 @@
+rsync -rav --progress /mnt/MediaShare/Baby/ /mnt/Backup/Baby/
+
+rsync -rav --progress /mnt/MediaShare/Books/ /mnt/Backup/Books/
+
+rsync -rav --progress /mnt/MediaShare/Documents/ /mnt/Backup/Documents/
+
+rsync -rav --progress /mnt/MediaShare/HTPC/ /mnt/Backup/HTPC/
+
+rsync -rav --progress /mnt/MediaShare/Movies/ /mnt/Backup/Movies/
+
+rsync -rav --progress /mnt/MediaShare/Music/ /mnt/Backup/Music/
+
+rsync -rav --progress /mnt/MediaShare/ownCloud/ /mnt/Backup/ownCloud/
+
+rsync -rav --progress /mnt/MediaShare/ownCloud-Backup/ /mnt/Backup/ownCloud-Backup/
+
+rsync -rav --progress /mnt/MediaShare/Pictures/ /mnt/Backup/Pictures/
+
+rsync -rav --progress /mnt/MediaShare/Programming/ /mnt/Backup/Programming/
+
+rsync -rav --progress /mnt/MediaShare/Programs/ /mnt/Backup/Programs/
+
+rsync -rav --progress /mnt/MediaShare/Ripped/ /mnt/Backup/Ripped/
+
+rsync -rav --progress /mnt/MediaShare/Torrents/ /mnt/Backup/Torrents/
+
+rsync -rav --progress /mnt/MediaShare/TVShows/ /mnt/Backup/TVShows/
+
+rsync -rav --progress /mnt/MediaShare/VPN/ /mnt/Backup/VPN/

@@ -1,0 +1,13 @@
+#!/bin/sh
+
+
+    chmod 777 -R /mnt/MediaShare/
+
+    chown jphipps:users -R /mnt/MediaShare/
+
+    echo Ownership and permissions changed.
+
+    find /mnt/MediaShare/ -name ._\* -print0 | xargs -0 rm -f
+
+    echo Pesky ._ files deleted.
+
