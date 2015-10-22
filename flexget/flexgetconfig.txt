@@ -1,0 +1,98 @@
+presets:
+  global:
+    email:
+      from: username@gmail.com
+      to: username@gmail.com
+      smtp_host: smtp.gmail.com
+      smtp_port: 587
+      smtp_login: true
+      smtp_username: username
+      smtp_password: password
+      smtp_tls: true
+
+  tv:
+    thetvdb_lookup: yes
+    series:
+      settings:
+        720p:
+          timeframe: 12 hours
+          quality: 720p
+          set:
+            content_filename: "%(series_name)s - S%(series_season)02dE%(series_episode)02d - %(ep_name)s - %(quality)s"
+            movedone: "/media/UserData/ChiMedia/Videos/TV Shows/%(series_name)s/Season %(series_season)s/"
+        HDTV:
+          quality: hdtv
+          set:
+            content_filename: "%(series_name)s - S%(series_season)02dE%(series_episode)02d - %(ep_name)s - %(quality)s"
+            movedone: "/media/UserData/ChiMedia/Videos/TV Shows/%(series_name)s/Season %(series_season)s/"
+      720p:
+        - Doctor Who:
+            set:
+              queuetotop: yes
+              thetvdb_id: 78804
+              label: doctor_who
+        - V 2009:
+            set:
+              movedone: "/media/UserData/ChiMedia/Videos/TV Shows/V/Season %(series_season)s/"
+              thetvdb_id: 94971
+              label: v
+
+      HDTV:
+        - Family Guy:
+            set:
+              thetvdb_id: 75978
+              label: family_guy
+        - The Daily Show:
+            set:
+              movedone: "/media/UserData/ChiMedia/Videos/TV Shows/%(series_name)s/%(series_season)s/"
+              content_filename: "%(series_name)s - %(series_season)s - %(ep_name)s - %(quality)s"
+              label: daily_show   
+        - Weeds
+        - Tosh.0:
+            exact: yes
+  
+    plugin_priority:
+      thetvdb_lookup: 129
+    deluge:
+      path: /media/UserData/Incomplete
+      user: username
+      pass: password
+
+  anime:
+    series:
+      settings:
+        720p:
+          timeframe: 6 hours
+          quality: 720p
+        HDTV:
+          quality: hdtv
+      720p:
+        - Bleach:
+            from_group:
+              - HorribleSubs
+              - CrunchySubs
+              - Bleachverse
+              - DB
+            set:
+              label: bleach
+              movedone: "/media/UserData/ChiMedia/Videos/TV Shows/Bleach/"
+    deluge:
+      path: /media/UserData/Incomplete
+      user: username
+      pass: password
+
+feeds:
+  EZRSS:
+    rss: http://www.ezrss.it/feed/
+    preset: tv
+  Bleach:
+    rss: http://www.nyaa.eu/?page=rss&term=bleach
+    preset: anime
+  Weeds:
+    rss: http://ezrss.it/search/index.php?simple&show_name=Weeds&mode=rss
+    preset: tv
+  Tosh.0:
+    rss: http://isohunt.com/js/rss/Tosh.0?iht=-1
+    preset: tv
+	
+:

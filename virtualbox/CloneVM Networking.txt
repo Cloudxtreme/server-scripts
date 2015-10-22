@@ -1,0 +1,16 @@
+Fixing a cloned VM Networking:
+
+sudo nano /etc/udev/rules.d/70-persistent-net.rules
+
+Look for:
+
+# PCI device 0x1022:0x2000 (pcnet32)
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="08:00:27:12:34:56", ATTR{type}=="1", KERNEL=="eth*", NAME="eth0"
+# PCI device 0x1022:0x2000 (pcnet32)
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="08:00:27:23:45:67", ATTR{type}=="1", KERNEL=="eth*", NAME="eth1"
+
+Edit to match.
+Save.
+Power off.
+Set Static IP on router.
+Power on.

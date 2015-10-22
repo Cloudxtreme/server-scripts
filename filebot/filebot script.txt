@@ -1,0 +1,7 @@
+filebot -script "/home/josh/scripts/amc.groovy" "/mnt/MediaShare/Movies" --output "/mnt/MediaShare" --action move --conflict override --def subtitles=en artwork=y backdrops=y clean=y >> "/home/josh/filebot.log" 2>&1
+
+filebot -script "/home/deluge/scripts/amc.groovy" "/home/deluge/Torrents/Completed" --output "/mnt" --action move --conflict override --def subtitles=en artwork=y backdrops=y >> "/home/josh/filebot.log" 2>&1
+
+filebot -script fn:mi /mnt/MediaShare/Movies "/mnt/MediaShare/MovieIndex.csv"
+
+filebot -script fn:mi /mnt/MediaShare/TVShows "/mnt/MediaShare/TVShowsIndex.csv"
