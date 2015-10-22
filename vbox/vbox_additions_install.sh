@@ -11,5 +11,6 @@ cd /media/cdrom
 
 sudo ./VBoxLinuxAdditions.run
 
-printf "\n%s\n\n" "*** Rebooting NOW!"
-#sudo reboot now
+printf "\n%s\n\n" "*** Rebooting, press key to continue..."
+read
+sudo reboot now
