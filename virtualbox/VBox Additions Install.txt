@@ -1,0 +1,31 @@
+VirtualBox Shared Folders for Ubuntu Server 12.04 LTS
+
+on Host:
+
+	VBoxManage sharedfolder add [nameofVM] –name [anameforthefolder] –hostpath [path/to/shared/folder]
+
+On Guest w/VBoxGuestAdditions.iso in cdrom:
+   
+	sudo apt-get install -y linux-headers-$(uname -r) build-essential dkms
+	sudo apt-get install -y xserver-xorg xserver-xorg-core
+
+	sudo mount /dev/cdrom /media/cdrom
+
+	cd /media/cdrom
+
+	sudo ./VBoxLinuxAdditions.run
+
+	sudo reboot
+
+After reboot:
+
+	sudo mkdir -p [path/to/mount/point]
+
+	sudo mount -t vboxsf -o uid=1000,gid=1000 [nameyougavefolder] [path/to/mount/point]
+
+	sudo nano /etc/fstab
+
+add:
+
+#VirtualBox Shared Folder
+[nameyougavefolder]	[path/to/mount/point]	vboxsf	uid=1000,gid=1000	0	0

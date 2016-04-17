@@ -1,0 +1,41 @@
+Deluge
+
+On Guest:
+
+sudo adduser --disabled-password --system --home /home/deluge --group deluge
+
+sudo apt-get update && sudo apt-get install deluged deluge-webui
+
+sudo nano /etc/default/deluge-daemon
+
+# Configuration for /etc/init.d/deluge-daemon
+# The init.d script will only run if this variable non-empty.
+DELUGED_USER="deluge"
+# Should we run at startup?
+RUN_AT_STARTUP="YES"
+
+sudo nano /etc/init.d/deluge-daemon
+
+-copy deluge-daemon.txt
+
+sudo chmod a+x /etc/init.d/deluge-daemon && sudo update-rc.d deluge-daemon defaults
+
+webui should be seen at [hostnameofmediaserver]:8112
+
+Console:
+
+sudo apt-get install deluge-console
+
+sudo -H -u deluge deluge-console
+
+config -s allow_remote True
+exit
+
+sudo /etc/init.d/deluge-daemon stop
+
+sudo chmod -R 777 /home/deluge && sudo -H -u deluge echo [yourusername]:[yourpassword]:10 >> /home/deluge/.config/deluge/auth
+
+sudo /etc/init.d/deluge-daemon start
+
+Install Client! - http://download.deluge-torrent.org/windows/?C=M;O=D
+

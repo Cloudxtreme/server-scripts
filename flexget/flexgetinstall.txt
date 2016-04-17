@@ -1,0 +1,30 @@
+FLEXGET
+So now that we have a way to download torrents directly to the server, wouldn't it be great not to have to find a torrent everytime one of our favorite shows aired? This is where FlexGet comes in. It is meant for exactly this purpose. FlexGet will let us:
+
+Automatically watch RSS feeds for new shows, while remembering exactly what shows it has already downloaded.
+It will let us give it guidelines as to what quality is acceptable. It will also let us tell it to what a certain amount of time for a show of one quality to become available before downloading one of lower quality. (FlexGet will let you tell it to wait 6 hours for 720p to become available before downloading Standard Definition.)
+It will automatically set episode names based on any pattern we give it, and if we so choose, look up information from the TVDB.com to place in the filename.
+It will automatically set folder paths for our torrents to be moved to when the torrent finishes downloading.
+Best of all: it can pass all this information to Deluge, so that the file doesn't show up in our file tree until it finishes downloading.
+And these are only the features of which we'll be making use. FlexGet can also send an email anytime it downloads a .torrent file, or even send a prowl notification to your iPhone. It will also work for any other type of file, not just .torrent files. For example when NBC was releasing .pdf files of comics based on the Heroes series, I set up a flexget entry to automatically download those .pdf files. If you prefer Usenet to BitTorrent, there are plugins to interface FlexGet with UseNet.
+
+
+sudo apt-get install python-setuptools
+
+sudo apt-get install python-pip
+
+sudo pip install flexget
+
+flexget -V
+
+sudo -u deluge nano /home/deluge/.flexget/config.yml
+
+Use flexgetconfig.txt as a guide
+
+sudo -H -u deluge flexget
+
+To Run FlexGet as a cronjob, we just need to create a job in webmin, like we did to start our Virtual Machines. Make sure that if deluge and flexget are running a Virtual Machine that you use the Webmin module for that machine instead of the main one.
+
+Go ahead and navigate to the Cron section of webmin [System ? Scheduled Cron Jobs], and click Create new Scheduled Cron Job. Set Execute as to deluge, Command to the full path for flexget, which is /usr/local/bin/flexget. Set Simple Schedule to Hourly. Once you hit create, flexget will check your RSS feeds every hour for new episodes to download.
+
+

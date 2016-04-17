@@ -1,0 +1,27 @@
+Filebot
+
+sudo mkdir ~/tmp2 && cd ~/tmp2
+
+sudo wget http://downloads.sourceforge.net/project/filebot/filebot/FileBot_3.4/filebot_3.4_amd64.deb
+
+sudo dpkg -i *.deb
+
+sudo apt-get -f install
+
+sudo apt-get autoclean && sudo apt-get autoremove
+
+cd .. && sudo rm -rf tmp2
+
+sudo nano /usr/bin/filebot
+
+change: -DuseGVFS=false -DuseExtendedFileAttributes=false -Djava.net.useSystemProxies=false -Dapplication.analytics=false
+
+sudo mkdir /home/deluge/scripts
+
+sudo chown deluge:deluge /home/deluge/scripts
+
+sudo chmod 777 /home/deluge/scripts
+
+cd /home/deluge/scripts
+
+sudo wget http://filebot.sf.net/scripts/amc.groovy

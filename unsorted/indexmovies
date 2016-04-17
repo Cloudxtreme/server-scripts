@@ -1,0 +1,3 @@
+#!/bin/bash
+
+filebot -script "/home/scripts/mi.groovy" /mnt/MediaShare/Movies "/mnt/MediaShare/MovieIndex.csv"

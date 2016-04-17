@@ -1,0 +1,3 @@
+#!/bin/bash
+
+pppd pty "pptp vpn-sf38.reliablehosting.com --nolaunchpppd" file /etc/ppp/options.pptp user vpn224 password vDHSuxBeQe

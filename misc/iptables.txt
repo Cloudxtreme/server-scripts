@@ -1,0 +1,84 @@
+# This code goes in the WAN UP section of the Tomato GUI.
+# This code based on the contributions from this thread:
+#  http://www.linksysinfo.org/index.php?threads/route-only-specific-ports-through-vpn-openvpn.37240/
+#
+# And from material in these articles:
+#  http://linux-ip.net/html/adv-multi-internet.html
+#  http://fedorasolved.org/Members/kanarip/iptables-howto
+#
+# This script configures "selective" VPN routing. Normally Tomato will route ALL traffic out
+# the OpenVPN tunnel. These changes to iptables allow some outbound traffic to use the VPN, and some
+# traffic to bypass the VPN and use the regular Internet instead.
+#
+#  To list the current rules on the router, issue the command:
+#      iptables -t mangle -L PREROUTING
+#
+#  Flush/reset all the rules to default by issuing the command:
+#      iptables -t mangle -F PREROUTING
+#
+ 
+#
+# First it is necessary to disable Reverse Path Filtering on all
+# current and future network interfaces:
+#
+for i in /proc/sys/net/ipv4/conf/*/rp_filter ; do
+  echo 0 > $i
+done
+ 
+#
+# Delete and table 100 and flush any existing rules if they exist.
+#
+ip route flush table 100
+ip route del default table 100
+ip rule del fwmark 1 table 100
+ip route flush cache
+iptables -t mangle -F PREROUTING
+ 
+#
+# Copy all non-default and non-VPN related routes from the main table into table 100.
+# Then configure table 100 to route all traffic out the WAN gateway and assign it mark "1"
+#
+# NOTE: Here I assume the OpenVPN tunnel is named "tun11".
+#
+#
+ip route show table main | grep -Ev ^default | grep -Ev tun11 \
+  | while read ROUTE ; do
+      ip route add table 100 $ROUTE
+done
+ip route add default table 100 via $(nvram get wan_gateway)
+ip rule add fwmark 1 table 100
+ip route flush cache
+ 
+ 
+#
+# Define the routing policies for the traffic. The rules will be applied in the order that they
+# are listed. In the end, packets with MARK set to "0" will pass through the VPN. If MARK is set
+# to "1" it will bypass the VPN.
+#
+# EXAMPLES:
+#
+#  All LAN traffic will bypass the VPN (Useful to put this rule first, so all traffic bypasses the VPN and you can configure exceptions afterwards)
+#    iptables -t mangle -A PREROUTING -i br0 -j MARK --set-mark 1
+#  Ports 80 and 443 will bypass the VPN
+#    iptables -t mangle -A PREROUTING -i br0 -p tcp -m multiport --dport 80,443 -j MARK --set-mark 1
+#  All traffic from a particular computer on the LAN will use the VPN
+#    iptables -t mangle -A PREROUTING -i br0 -m iprange --src-range 192.168.1.2 -j MARK --set-mark 0
+#  All traffic to a specific Internet IP address will use the VPN
+#    iptables -t mangle -A PREROUTING -i br0 -m iprange --dst-range 216.146.38.70 -j MARK --set-mark 0
+#  All UDP and ICMP traffic will bypass the VPN
+#    iptables -t mangle -A PREROUTING -i br0 -p udp -j MARK --set-mark 1
+#    iptables -t mangle -A PREROUTING -i br0 -p icmp -j MARK --set-mark 1
+ 
+ 
+# By default all traffic bypasses the VPN
+iptables -t mangle -A PREROUTING -i br0 -j MARK --set-mark 0
+
+# Testing Mac to use VPN
+iptables -t mangle -A PREROUTING -i br0 -m iprange --src-range 10.135.242.62 -j MARK --set-mark 1
+
+#  Ports 80 and 443 will bypass the VPN
+iptables -t mangle -A PREROUTING -i br0 -p tcp -m multiport --dport 80,443 -j MARK --set-mark 1
+ 
+# Spotify explicitly uses the VPN
+#iptables -t mangle -A PREROUTING -i br0 -m iprange --dst-range 78.31.8.1-78.31.15.254 -j MARK --set-mark 0
+#iptables -t mangle -A PREROUTING -i br0 -m iprange --dst-range 193.182.8.1-193.182.15.254 -j MARK --set-mark 0

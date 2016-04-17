@@ -1,0 +1,31 @@
+gcp -rv /mnt/MediaShare/Baby/ /mnt/Backup/Baby/
+
+gcp -rv /mnt/MediaShare/Books/ /mnt/Backup/Books/
+
+gcp -rv /mnt/MediaShare/Documents/ /mnt/Backup/Documents/
+
+gcp -rv /mnt/MediaShare/HTPC/ /mnt/Backup/HTPC/
+
+gcp -rv /mnt/MediaShare/Movies/ /mnt/Backup/Movies/
+
+gcp -rv /mnt/MediaShare/Music/ /mnt/Backup/Music/
+
+gcp -rv /mnt/MediaShare/ownCloud/ /mnt/Backup/ownCloud/
+
+gcp -rv /mnt/MediaShare/ownCloud-Backup/ /mnt/Backup/ownCloud-Backup/
+
+gcp -rv /mnt/MediaShare/Pictures/ /mnt/Backup/Pictures/
+
+gcp -rv /mnt/MediaShare/Programming/ /mnt/Backup/Programming/
+
+gcp -rv /mnt/MediaShare/Programs/ /mnt/Backup/Programs/
+
+gcp -rv /mnt/MediaShare/Ripped/ /mnt/Backup/Ripped/
+
+gcp -rv /mnt/MediaShare/Torrents/ /mnt/Backup/Torrents/
+
+gcp -rv /mnt/MediaShare/TVShows/ /mnt/Backup/TVShows/
+
+gcp -rv /mnt/MediaShare/VPN/ /mnt/Backup/VPN/
+
+chmod 777 /mnt/Backup

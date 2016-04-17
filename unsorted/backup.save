@@ -1,0 +1,80 @@
+#!/bin/bash
+
+DM=$(date +"%d%b")
+
+DIR="Books"
+echo Starting backup of /mnt/MediaShare/$DIR...
+tar -cvpzf /mnt/Backup/$DIR/$DIR-$DM.tar.gz -g $DIR-$DM.snap /mnt/MediaShare/$DIR
+split -d -b 3900m /mnt/Backup/$DIR/$DIR-$DM.tar.gz /mnt/Backup/$DIR/$DIR-$DM.tar.gz
+rm $DIR-$DM.tar.gz
+echo Finished backup of /mnt/MediaShare/$DIR...
+
+DIR="Documents"
+echo Starting backup of /mnt/MediaShare/$DIR...
+tar -cvpzf /mnt/Backup/$DIR/$DIR-$DM.tar.gz -g $DIR-$DM.snap /mnt/MediaShare/$DIR
+split -d -b 3900m /mnt/Backup/$DIR/$DIR-$DM.tar.gz /mnt/Backup/$DIR/$DIR-$DM.tar.gz
+rm $DIR-$DM.tar.gz
+echo Finished backup of /mnt/MediaShare/$DIR...
+
+DIR="VPN"
+echo Starting backup of /mnt/MediaShare/$DIR...
+tar -cvpzf /mnt/Backup/$DIR/$DIR-$DM.tar.gz -g $DIR-$DM.snap /mnt/MediaShare/$DIR
+split -d -b 3900m /mnt/Backup/$DIR/$DIR-$DM.tar.gz /mnt/Backup/$DIR/$DIR-$DM.tar.gz
+rm $DIR-$DM.tar.gz
+echo Finished backup of /mnt/MediaShare/$DIR...
+
+DIR="ownCloud"
+echo Starting backup of /mnt/MediaShare/$DIR...
+tar -cvpzf /mnt/Backup/$DIR/$DIR-$DM.tar.gz -g $DIR-$DM.snap /mnt/MediaShare/$DIR
+split -d -b 3900m /mnt/Backup/$DIR/$DIR-$DM.tar.gz /mnt/Backup/$DIR/$DIR-$DM.tar.gz
+rm $DIR-$DM.tar.gz
+echo Finished backup of /mnt/MediaShare/$DIR...
+
+DIR="ownCloud-Backup"
+echo Starting backup of /mnt/MediaShare/$DIR...
+tar -cvpzf /mnt/Backup/$DIR/$DIR-$DM.tar.gz -g $DIR-$DM.snap /mnt/MediaShare/$DIR
+split -d -b 3900m /mnt/Backup/$DIR/$DIR-$DM.tar.gz /mnt/Backup/$DIR/$DIR-$DM.tar.gz
+rm $DIR-$DM.tar.gz
+echo Finished backup of /mnt/MediaShare/$DIR...
+
+DIR="Pictures"
+echo Starting backup of /mnt/MediaShare/$DIR...
+tar -cvpzf /mnt/Backup/$DIR/$DIR-$DM.tar.gz -g $DIR-$DM.snap /mnt/MediaShare/$DIR
+split -d -b 3900m /mnt/Backup/$DIR/$DIR-$DM.tar.gz /mnt/Backup/$DIR/$DIR-$DM.tar.gz
+rm $DIR-$DM.tar.gz
+echo Finished backup of /mnt/MediaShare/$DIR...
+
+DIR="Ripped"
+echo Starting backup of /mnt/MediaShare/$DIR...
+tar -cvpzf /mnt/Backup/$DIR/$DIR-$DM.tar.gz -g $DIR-$DM.snap /mnt/MediaShare/$DIR
+split -d -b 3900m /mnt/Backup/$DIR/$DIR-$DM.tar.gz /mnt/Backup/$DIR/$DIR-$DM.tar.gz
+rm $DIR-$DM.tar.gz
+echo Finished backup of /mnt/MediaShare/$DIR...
+
+DIR="Music"
+echo Starting backup of /mnt/MediaShare/$DIR...
+tar -cvpzf /mnt/Backup/$DIR/$DIR-$DM.tar.gz -g $DIR-$DM.snap /mnt/MediaShare/$DIR
+split -d -b 3900m /mnt/Backup/$DIR/$DIR-$DM.tar.gz /mnt/Backup/$DIR/$DIR-$DM.tar.gz
+rm $DIR-$DM.tar.gz
+echo Finished backup of /mnt/MediaShare/$DIR...
+
+DIR="Movies"
+echo Starting backup of /mnt/MediaShare/$DIR...
+tar -cvpzf /mnt/Backup/$DIR/$DIR-$DM.tar.gz -g $DIR-$DM.snap /mnt/MediaShare/$DIR
+split -d -b 3900m /mnt/Backup/$DIR/$DIR-$DM.tar.gz /mnt/Backup/$DIR/$DIR-$DM.tar.gz
+rm $DIR-$DM.tar.gz
+echo Finished backup of /mnt/MediaShare/$DIR...
+
+DIR="TVShows"
+echo Starting backup of /mnt/MediaShare/$DIR...
+tar -cvpzf /mnt/Backup/$DIR/$DIR-$DM.tar.gz -g $DIR-$DM.snap /mnt/MediaShare/$DIR
+split -d -b 3900m /mnt/Backup/$DIR/$DIR-$DM.tar.gz /mnt/Backup/$DIR/$DIR-$DM.tar.gz
+rm $DIR-$DM.tar.gz
+echo Finished backup of /mnt/MediaShare/$DIR...
+
+DIR="Programs"
+echo Starting backup of /mnt/MediaShare/$DIR...
+tar -cvpzf /mnt/Backup/$DIR/$DIR-$DM.tar.gz -g $DIR-$DM.snap /mnt/MediaShare/$DIR
+split -d -b 3900m /mnt/Backup/$DIR/$DIR-$DM.tar.gz /mnt/Backup/$DIR/$DIR-$DM.tar.gz
+rm $DIR-$DM.tar.gz
+echo Finished backup of /mnt/MediaShare/$DIR...

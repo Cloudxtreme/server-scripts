@@ -1,0 +1,29 @@
+#!/bin/bash
+# Name of File: startVM
+# Purpose: to start a VirtualBox VM on start up. to use, add this script as a 
+# cron job in the crontab of the user that controls your VMs.
+
+# This Script expects  a single parameter, which is the name of your VM.
+# So proper Usage is "startVM nameofyourvm"
+
+#list the necessary Variables
+VMNAME=$1
+VMSTATUS=`VBoxManage list runningvms | grep $VMNAME | wc -l` #don't change this line, this checks whether the VM is running.
+
+sleep 60 # wait 3 minutes for the server to finish booting up so all the VBox Modules have a chance to load
+
+if [ $VMSTATUS = 1 ];
+   then echo "$VMNAME is Already Running, Aborting Script."
+   else
+     echo "$VMNAME is NOT running, starting now."
+     VBoxManage startvm $VMNAME -type headless >/dev/null 2>&1
+# This is the command if you are using VirtualBox 3.2. If you have upgraded to VirtualBox 4.0, replace "-type vrdp" with  "-type headless"
+     if [ `VBoxManage list runningvms | grep $VMNAME | wc -l` = "1" ]
+       then echo "Done."
+       else 
+         echo "Error Starting VM. Please check the VMNAME Variable, and that you are running this script as your VirtualBox Administrator."
+         
+     fi
+fi
+
+#EOF

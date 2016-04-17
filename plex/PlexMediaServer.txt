@@ -1,0 +1,14 @@
+Plex Media Server:
+
+sudo mkdir ~/tmp && cd ~/tmp
+
+sudo wget http://plex.r.worldssl.net/PlexMediaServer/0.9.7.17.469-1f0b170/plexmediaserver_0.9.7.17.469-1f0b170_amd64.deb
+
+sudo dpkg -i *.deb
+
+sudo apt-get -f install
+
+cd .. && sudo rm -rf tmp
+
+http://IP-ADDRESS:32400/manage/index.html
+
